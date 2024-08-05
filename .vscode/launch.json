@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Cucumber",
+        "type": "node",
+        "request": "launch",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber-js",
+        "args": [
+          "--require-module",
+          "ts-node/register",
+          "--require",
+          "src/test/steps/**/*.ts",
+          "src/test/features/**/*.feature",
+          "--tags",
+          "@debug",
+          "--format",
+          "progress"
+        ],
+        "runtimeExecutable": null,
+        "runtimeArgs": [],
+        "env": {
+          "NODE_ENV": "development"
+        },
+      }
+    ]
+  }
+  
