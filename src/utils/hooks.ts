@@ -26,7 +26,10 @@ setDefaultTimeout(60 * 1000);
 BeforeAll(async function () {
   switch (process.env.BROWSER) {
     case "chrome":
-      browser = await chromium.launch({ headless: false, channel: "chrome" });
+      browser = await chromium.launch({
+        headless: process.env.CI ? true : false,
+        channel: "chrome",
+      });
       break;
     default:
       browser = await chromium.launch();
