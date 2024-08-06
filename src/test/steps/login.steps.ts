@@ -1,8 +1,6 @@
 import { ICustomWorld } from "../../utils/custom-world";
-import { Given, When, Then } from "@cucumber/cucumber";
+import { Given, When, Then, DataTable } from "@cucumber/cucumber";
 import { HomePage } from "../../pages/HomePage";
-
-//let homePage;
 
 Given("the user is on the homepage page", async function () {
   this.homePage = new HomePage(this.page!);
@@ -40,3 +38,28 @@ Then(
     await this.homePage.getFormErrorMessage(error);
   },
 );
+
+Then(
+  "the user should be logged in {string}",
+  async function (urlSuffix: string) {
+    await this.homePage.waitForLoginToBeSuccessfull(urlSuffix);
+  },
+);
+
+When(
+  "the user logins with the following credentials:",
+  async function (dataTable: DataTable) {
+    const data = dataTable.hashes();
+
+    data.forEach(async (row) => {
+      const username = row.username;
+      const password = row.password;
+
+      await this.homePage.login(username, password);
+    });
+  },
+);
+
+Then("the url should contain {string}", async function (s: string) {
+  this.homePage.assertPageURLContainsString(s);
+});

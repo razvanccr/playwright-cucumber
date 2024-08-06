@@ -38,7 +38,7 @@ BeforeAll(async function () {
   }
 });
 
-Before(async function ( { pickle }: ITestCaseHookParameter) {
+Before(async function ({ pickle }: ITestCaseHookParameter) {
   this.startTime = new Date();
   this.testName = pickle.name.replace(/\W/g, "-");
   this.context = await browser.newContext({

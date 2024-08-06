@@ -6,6 +6,7 @@ export class HomePage {
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
   readonly formErrorMessage: Locator;
+  readonly buttonMenuBurger: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class HomePage {
     this.passwordInput = page.locator("#password");
     this.loginButton = page.locator("#login-button");
     this.formErrorMessage = page.locator("h3[data-test='error']");
+    this.buttonMenuBurger = page.locator("div[bm-burger-button]");
   }
 
   async navigateTo(): Promise<void> {
@@ -25,10 +27,18 @@ export class HomePage {
   }
 
   async clickLogin(): Promise<void> {
-    await this.loginButton.click();
+    await this.loginButton.click({ delay: 1000 });
   }
 
   async getFormErrorMessage(errorMessage: string) {
     await expect(this.formErrorMessage).toHaveText(errorMessage);
+  }
+
+  async assertPageURLContainsString(urlSuffix: string) {
+    await expect(this.page.url()).toContain(urlSuffix);
+  }
+
+  async waitForLoginToBeSuccessfull(urlSuffix: string) {
+    await this.page.waitForURL(process.env.URL + urlSuffix);
   }
 }
