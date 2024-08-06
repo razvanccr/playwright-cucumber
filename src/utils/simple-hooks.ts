@@ -38,7 +38,7 @@ BeforeAll(async function () {
   }
 });
 
-Before(async function (this: ICustomWorld, { pickle }: ITestCaseHookParameter) {
+Before(async function ( { pickle }: ITestCaseHookParameter) {
   this.startTime = new Date();
   this.testName = pickle.name.replace(/\W/g, "-");
   this.context = await browser.newContext({
@@ -65,7 +65,7 @@ Before({ tags: "@ignore" }, async function () {
   return "skipped" as any;
 }); //
 
-After(async function ( { result }: ITestCaseHookParameter) {
+After(async function ({ result }: ITestCaseHookParameter) {
   if (result) {
     this.attach(
       `Status: ${result?.status}. Duration:${result.duration?.seconds}s`,
