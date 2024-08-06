@@ -34,3 +34,12 @@ jobs:
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: "reports/cucumber-report-junit.xml"
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "reports/cucumber-report.html"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
