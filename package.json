@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js",
-    "posttest": "ts-node allure-setup.ts",
-    "report": "allure generate allure-results --clean -o allure-report"
+    "test": "cucumber-js"
   },
   "keywords": [],
   "author": "",
