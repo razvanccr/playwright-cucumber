@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "@cucumber/cucumber": "^10.8.0",
+    "@cucumber/pretty-formatter": "^1.0.1",
     "@playwright/test": "^1.45.3",
     "dotenv": "^16.4.5",
     "playwright-cucumber": "file:",

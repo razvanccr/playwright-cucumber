@@ -2,12 +2,14 @@
   "default": {
     "requireModule": ["ts-node/register"],
     "formatOptions": {
-      "snippetInterface": "async-await"
+      "snippetInterface": "async-await",
+      "colorsEnabled": true
     },
     "format": [
       "json:./reports/cucumber_report.json",
       "html:reports/cucumber-report.html",
-      "junit:reports/cucumber-report-junit.xml"
+      "junit:reports/cucumber-report-junit.xml",
+      "@cucumber/pretty-formatter"
     ],
     "require": ["src/utils/hooks.ts", "src/test/steps/*.ts"],
     "paths": ["src/test/features/*.feature"],

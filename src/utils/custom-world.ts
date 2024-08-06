@@ -1,7 +1,5 @@
 import { setWorldConstructor, World, IWorldOptions } from "@cucumber/cucumber";
 import * as messages from "@cucumber/messages";
-import "allure-cucumberjs";
-
 
 import {
   BrowserContext,

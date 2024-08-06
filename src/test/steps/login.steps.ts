@@ -24,5 +24,7 @@ Then(
   "the user is informed with the message {string}",
   async function (this: ICustomWorld, errorMessage: string) {
     await homePage!.getFormErrorMessage(errorMessage);
+  
   },
 );
+

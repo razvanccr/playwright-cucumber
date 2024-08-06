@@ -19,7 +19,9 @@ import {
 import { ITestCaseHookParameter } from "@cucumber/cucumber/lib/support_code_library_builder/types";
 
 let browser: ChromiumBrowser | Browser;
-const tracesDir = "traces";
+
+const tracesDir = "test-results/traces";
+const videoDir = "test-results/videos";
 
 setDefaultTimeout(60 * 1000);
 
@@ -41,7 +43,7 @@ Before(async function (this: ICustomWorld, { pickle }: ITestCaseHookParameter) {
   this.testName = pickle.name.replace(/\W/g, "-");
   this.context = await browser.newContext({
     acceptDownloads: true,
-    recordVideo: { dir: "test-results/videos" },
+    recordVideo: { dir: videoDir },
     viewport: { width: 1920, height: 1080 },
   });
 
