@@ -24,7 +24,19 @@ Then(
   "the user is informed with the message {string}",
   async function (this: ICustomWorld, errorMessage: string) {
     await homePage!.getFormErrorMessage(errorMessage);
-  
   },
 );
 
+When(
+  "the user enters the username {string} and the password {string}",
+  async function (this: ICustomWorld, username: string, password: string) {
+    await homePage!.login(username, password);
+  },
+);
+
+Then(
+  "the user receives the error message {string}",
+  async function (this: ICustomWorld, error: string) {
+    await homePage!.getFormErrorMessage(error);
+  },
+);

@@ -21,7 +21,7 @@ Then("the email should be saved correctly", function () {
 Then(
   /the user is a complex name formed by (\d+) words/,
   function (nameCount: number) {
-    expect(this.arrayOfStrings).toHaveLength(2);
+    expect(this.arrayOfStrings).toHaveLength(nameCount);
   },
 );
 
