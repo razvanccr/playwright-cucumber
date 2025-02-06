@@ -11,8 +11,8 @@
       "junit:reports/cucumber-report-junit.xml",
       "@cucumber/pretty-formatter"
     ],
-    "require": ["src/utils/simple-hooks.ts", "src/test/steps/*.ts"],
-    "paths": ["src/test/features/*.feature"],
+    "require": ["src/utils/simple-hooks.ts", "src/tests/**/*.ts"],
+    "paths": ["src/tests/features/*.feature"],
     "dryRun": false
   }
 }
