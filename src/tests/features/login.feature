@@ -5,7 +5,7 @@ Feature: User Authentication tests
   Background:
     Given the user is on the homepage page
 
-  @datatable
+  @datatable @current
   Scenario: Success login to homepage
     When the user logins with the following credentials:
       | username      | password     |
