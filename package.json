@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js && allure generate --single-file ./allure-results"
+    "test": "npx cucumber-js && npx allure generate --single-file ./allure-results"
   },
   "keywords": [],
   "author": "",
