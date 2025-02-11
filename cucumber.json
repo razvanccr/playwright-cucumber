@@ -3,13 +3,15 @@
     "requireModule": ["ts-node/register"],
     "formatOptions": {
       "snippetInterface": "async-await",
-      "colorsEnabled": true
+      "colorsEnabled": true,
+      "resultsDir": "allure-results"
     },
     "format": [
       "json:./reports/cucumber_report.json",
       "html:reports/index.html",
       "junit:reports/cucumber-report-junit.xml",
-      "@cucumber/pretty-formatter"
+      "@cucumber/pretty-formatter",
+      "allure-cucumberjs/reporter"
     ],
     "require": ["src/utils/simple-hooks.ts", "src/tests/**/*.ts"],
     "paths": ["src/tests/features/*.feature"],
