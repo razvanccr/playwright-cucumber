@@ -14,7 +14,7 @@ Feature: User Authentication tests
     Then the user should be logged in 'inventory.html'
     And the url should contain "inventory.html"
 
-  @current
+ 
   Scenario: Failed login using invalid data for the login form
     When the user enters "username" and password "password"
     And clicks the login button
