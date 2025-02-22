@@ -65,14 +65,17 @@ Before({ tags: "@ignore" }, async function () {
   return "skipped" as any;
 }); //
 
-After(async function ( { result }: ITestCaseHookParameter) {
+After(async function ({ result, pickle }: ITestCaseHookParameter) {
   if (result) {
     this.attach(
       `Status: ${result?.status}. Duration:${result.duration?.seconds}s`,
     );
 
     if (result.status !== Status.PASSED) {
-      const image = await this.page?.screenshot();
+      const image = await this.page?.screenshot({
+        path: `./test-results/screenshots/${pickle.name.trim()}.png`,
+        type: "png",
+      });
 
       const timePart = this.startTime
         ?.toISOString()
@@ -89,6 +92,14 @@ After(async function ( { result }: ITestCaseHookParameter) {
         this.log(
           `<a href="file://${video}" target="_blank">Open Video File</a>`,
         );
+      //  await this.attach(video, "video/webm");
+
+      this.log(`<video controls width="600">
+          <source
+              src="
+             file://${video}"
+              type="video/webm">
+      </video>`);
 
       const traceFilePath = `${tracesDir}/${this.testName}-${timePart}trace.zip`;
       const traceFileLink = `<a href="https://trace.playwright.dev/?trace=blob:https://trace.playwright.dev/${traceFilePath}" target="_blank">Open Trace File</a>`;
