@@ -13,7 +13,7 @@
       "@cucumber/pretty-formatter",
       "allure-cucumberjs/reporter"
     ],
-    "require": ["src/utils/simple-hooks.ts", "src/tests/**/*.ts"],
+    "require": ["src/utils/hooks.ts", "src/tests/**/*.ts"],
     "paths": ["src/tests/features/*.feature"],
     "dryRun": false
   }

@@ -17,6 +17,7 @@ import {
   Browser,
 } from "@playwright/test";
 import { ITestCaseHookParameter } from "@cucumber/cucumber/lib/support_code_library_builder/types";
+import fs from "fs";
 
 let browser: ChromiumBrowser | Browser;
 
@@ -82,28 +83,30 @@ After(async function ({ result, pickle }: ITestCaseHookParameter) {
         .split(".")[0]
         .replaceAll(":", "_");
 
+        
       image && (await this.attach(image, "image/png"));
+
+      const tracePath = `${tracesDir}/${this.testName}-${timePart}trace.zip`;
+      
       await this.context?.tracing.stop({
-        path: `${tracesDir}/${this.testName}-${timePart}trace.zip`,
+        path: tracePath,
       });
 
       const video = await this.page?.video()?.path();
       video &&
-        this.log(
-          `<a href="file://${video}" target="_blank">Open Video File</a>`,
-        );
-      //  await this.attach(video, "video/webm");
-
-      this.log(`<video controls width="600">
+        this.log(`<video controls width="600">
           <source
               src="
              file://${video}"
               type="video/webm">
       </video>`);
 
-      const traceFilePath = `${tracesDir}/${this.testName}-${timePart}trace.zip`;
-      const traceFileLink = `<a href="https://trace.playwright.dev/?trace=blob:https://trace.playwright.dev/${traceFilePath}" target="_blank">Open Trace File</a>`;
-      this.log(traceFileLink);
+
+      const traceFileLink = `<a href="https://trace.playwright.dev/?trace=file://${tracePath}" target="_blank">Open</a>`;
+      this.link(traceFileLink);
+      this.log(`Trace file: ${traceFileLink}`);
+
+      await this.attach(`Trace file: ${traceFileLink}`, "text/html");
     }
   }
   await this.page?.close();
