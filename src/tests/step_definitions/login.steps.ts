@@ -1,4 +1,3 @@
-import { ICustomWorld } from "../../utils/custom-world";
 import { Given, When, Then, DataTable } from "@cucumber/cucumber";
 import { HomePage } from "../../pages/HomePage";
 
