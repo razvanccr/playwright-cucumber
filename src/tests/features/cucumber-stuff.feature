@@ -6,7 +6,7 @@ Feature: Testing various cucumber functionalities
 
  Scenario: The steps are defined using the regex instead of string
  Given the user has a format first + last name "john.snow" format
- Then the user is a complex name formed by 3 words
+ Then the user is a complex name formed by 2 words
 
  Scenario: The steps are defined using the regex instead of string
  Given the user has a format first + last name "john.snow" format

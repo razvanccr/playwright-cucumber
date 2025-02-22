@@ -5,3 +5,6 @@ node_modules/
 /playwright/.cache/
 reports/
 traces/
+allure-report/
+allure-results/
+.DS_Store
