@@ -27,7 +27,7 @@ jobs:
 
       - name: Remove @current from .feature files
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: find . -name "*.feature" -type f -print0 | xargs -0 sed -i -E 's/(^|\s)@current(\s|$)/\2/g'
+        run: find . -name "*.feature" -type f -print0 | xargs -0 sed -i -E 's/(^|\s)@only(\s|$)/\2/g'
 
       - name: Commit and push changes if needed
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

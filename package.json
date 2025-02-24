@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js test",
+    "test": "npx cucumber-js",
     "test-current": "npx cucumber-js test -t @current"
   },
   "keywords": [],
