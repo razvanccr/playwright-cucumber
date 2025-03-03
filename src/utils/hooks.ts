@@ -16,6 +16,7 @@ import {
   Browser,
 } from "@playwright/test";
 import { ITestCaseHookParameter } from "@cucumber/cucumber/lib/support_code_library_builder/types";
+import { ICustomWorld } from "./custom-world";
 
 let browser: ChromiumBrowser | Browser;
 
@@ -37,7 +38,7 @@ BeforeAll(async function () {
   }
 });
 
-Before(async function ( { pickle }: ITestCaseHookParameter) {
+Before(async function ( this: ICustomWorld,{ pickle }: ITestCaseHookParameter) {
   this.startTime = new Date();
   this.testName = pickle.name.replace(/\W/g, "-");
   this.context = await browser.newContext({
