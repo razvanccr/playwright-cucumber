@@ -1,18 +1,28 @@
 {
   "default": {
-    "requireModule": ["ts-node/register"],
+    "requireModule": [
+      "ts-node/register"
+    ],
     "formatOptions": {
       "snippetInterface": "async-await",
       "colorsEnabled": true,
-      "resultsDir": "allure-results"    
+      "allure": {
+        "outputDir": "reports/allure-results"
+      }
     },
     "format": [
       "@cucumber/pretty-formatter",
       "html:reports/index.html",
-      "junit:reports/cucumber-report-junit.xml"     
+      "junit:reports/cucumber-report-junit.xml",
+      "allure-cucumberjs/reporter"
     ],
-    "require": ["src/utils/hooks.ts", "src/tests/**/*.ts"],
-    "paths": ["src/tests/features/*.feature"],
+    "require": [
+      "src/utils/hooks.ts",
+      "src/tests/**/*.ts"
+    ],
+    "paths": [
+      "src/tests/features/*.feature"
+    ],
     "dryRun": false
   }
 }

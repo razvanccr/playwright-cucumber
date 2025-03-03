@@ -5,7 +5,7 @@ Feature: User Authentication tests
   Background:
     Given the user is on the homepage page
 
-  @debug @sadface
+  @debug @sadface @current
   Scenario: Success login to homepage
     When the user logins with the following credentials:
       | username      | password     |
@@ -14,7 +14,7 @@ Feature: User Authentication tests
     Then the user should be logged in 'inventory.html'
     And the url should contain "inventory.html"
 
- 
+ @current
   Scenario: Failed login using invalid data for the login form
     When the user enters "username" and password "password"
     And clicks the login button
@@ -25,7 +25,7 @@ Feature: User Authentication tests
     And clicks the login button
     Then the user receives the error message "<message>"
 
-    @dataset
+    @dataset @current
     Examples:
       | username | password | message                            |
       |          | bdd      | Epic sadface: Username is required |
