@@ -9,7 +9,6 @@
       "allure": {
         "outputDir": "reports/allure-results"
       }
-      "colorsEnabled": true
     },
     "format": [
       "@cucumber/pretty-formatter",
