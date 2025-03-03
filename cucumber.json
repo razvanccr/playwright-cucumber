@@ -5,16 +5,12 @@
     ],
     "formatOptions": {
       "snippetInterface": "async-await",
-      "colorsEnabled": true,
-      "allure": {
-        "outputDir": "reports/allure-results"
-      }
+      "colorsEnabled": true
     },
     "format": [
       "@cucumber/pretty-formatter",
       "html:reports/index.html",
-      "junit:reports/cucumber-report-junit.xml",
-      "allure-cucumberjs/reporter"
+      "junit:reports/cucumber-report-junit.xml"
     ],
     "require": [
       "src/utils/hooks.ts",
